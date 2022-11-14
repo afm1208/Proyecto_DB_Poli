@@ -153,7 +153,11 @@ public class Autentificacion extends javax.swing.JFrame {
                 Organizacion tablaOrg = new Organizacion();
                 tablaOrg.setVisible(true);
                
-           }else{
+           }else if( tipou.equals("Administrador") && rs.next()){
+                JOptionPane.showMessageDialog(this, "Autentificacion correcta");
+                Administrador tablaAdmin = new Administrador();
+                tablaAdmin.setVisible(true);
+        }else{
                JOptionPane.showMessageDialog(this, "Error usuario no encontrado");
            }
             

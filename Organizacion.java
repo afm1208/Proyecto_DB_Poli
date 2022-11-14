@@ -108,6 +108,25 @@ public class Organizacion extends javax.swing.JFrame {
         txtProveedor.setText("");
         txtCantidad.setText("");
     }
+     
+      public void eliminar(){
+        int filaseleccionada= Org.getSelectedRow();
+        try {
+            String SQL="delete from producto where id_producto="+Org.getValueAt(filaseleccionada, 0);
+            Statement st = (Statement) con.createStatement();
+            int n=st.executeUpdate(SQL);
+            
+            if(n>=0){
+                JOptionPane.showMessageDialog(null,"Usuario eliminado");
+            }else{
+                 JOptionPane.showMessageDialog(null,"Usuario no eliminado");
+            }
+            
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null,"Error al eliminar"+e.getMessage());
+        }
+    }
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -351,7 +370,7 @@ public class Organizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMedidaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        eliminar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
